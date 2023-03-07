@@ -1,0 +1,154 @@
+<html>
+<body>
+<pre>
+<h1>µVision Build Log</h1>
+<h2>Tool Versions:</h2>
+IDE-Version: µVision V5.31.0.0
+Copyright (C) 2020 ARM Ltd and ARM Germany GmbH. All rights reserved.
+License Information: Nazim Windows, HP Inc., LIC=----
+ 
+Tool Versions:
+Toolchain:       MDK-Lite  Version: 5.31.0.0
+Toolchain Path:  C:\Keil_v5\ARM\ARMCLANG\Bin
+C Compiler:      ArmClang.exe V6.14
+Assembler:       Armasm.exe V6.14
+Linker/Locator:  ArmLink.exe V6.14
+Library Manager: ArmAr.exe V6.14
+Hex Converter:   FromElf.exe V6.14
+CPU DLL:         SARMCM3.DLL V5.31.0.0
+Dialog DLL:      DCM.DLL V1.17.3.0
+Target DLL:      STLink\ST-LINKIII-KEIL_SWO.dll V3.0.7.0
+Dialog DLL:      TCM.DLL V1.46.0.0
+ 
+<h2>Project:</h2>
+C:\Users\nazim\Desktop\Courses\Keil_Pgrms\Embedded\RPM\RPM.uvprojx
+Project File Date:  04/19/2021
+
+<h2>Output:</h2>
+*** Using Compiler 'V6.14', folder: 'C:\Keil_v5\ARM\ARMCLANG\Bin'
+Build target 'Target 1'
+RPM.c(76): warning: '&' within '|' [-Wbitwise-op-parentheses]
+                                if(first | GPIOC->IDR & 0x00000001){    //If Switch is off (Cruise Mode off), then continue reading and updating result from ADC
+                                         ~ ~~~~~~~~~~~^~~~~~~~~~~~
+RPM.c(76): note: place parentheses around the '&' expression to silence this warning
+                                if(first | GPIOC->IDR & 0x00000001){    //If Switch is off (Cruise Mode off), then continue reading and updating result from ADC
+                                           ~~~~~~~~~~~^~~~~~~~~~~~
+RPM.c(76): warning: implicit conversion changes signedness: 'int' to 'unsigned int' [-Wsign-conversion]
+                                if(first | GPIOC->IDR & 0x00000001){    //If Switch is off (Cruise Mode off), then continue reading and updating result from ADC
+                                   ^~~~~ ~
+RPM.c(80): warning: implicit conversion changes signedness: 'volatile uint32_t' (aka 'volatile unsigned int') to 'int' [-Wsign-conversion]
+                                                result = ADC1->DR;              /* read conversion result */
+                                                       ~ ~~~~~~^~
+RPM.c(93): warning: implicit conversion changes signedness: 'int' to 'uint32_t' (aka 'unsigned int') [-Wsign-conversion]
+                                TIM8->CCR1 = result;                            //feed result from ADC to PWM to supply voltage to motor
+                                           ~ ^~~~~~
+RPM.c(98): warning: implicit conversion changes signedness: 'volatile uint32_t' (aka 'volatile unsigned int') to 'int' [-Wsign-conversion]
+                                last = TIM3->CCR1; 
+                                     ~ ~~~~~~^~~~
+RPM.c(102): warning: implicit conversion changes signedness: 'volatile uint32_t' (aka 'volatile unsigned int') to 'int' [-Wsign-conversion]
+                                current = TIM3->CCR1;       /* read captured counter value */
+                                        ~ ~~~~~~^~~~
+RPM.c(103): warning: implicit conversion from 'int' to 'float' may lose precision [-Wimplicit-int-float-conversion]
+        period = current - last;    /* calculate the period */
+               ~ ~~~~~~~~^~~~~~
+RPM.c(108): warning: implicit conversion increases floating-point precision: 'float' to 'double' [-Wdouble-promotion]
+                                sprintf(conv, "%f", rpm);
+                                ~~~~~~~             ^~~
+RPM.c(114): warning: '&' within '|' [-Wbitwise-op-parentheses]
+                                if(first | GPIOC->IDR & 0x00000001){    //If Switch is off (Cruise Mode off), do nothing
+                                         ~ ~~~~~~~~~~~^~~~~~~~~~~~
+RPM.c(114): note: place parentheses around the '&' expression to silence this warning
+                                if(first | GPIOC->IDR & 0x00000001){    //If Switch is off (Cruise Mode off), do nothing
+                                           ~~~~~~~~~~~^~~~~~~~~~~~
+RPM.c(114): warning: implicit conversion changes signedness: 'int' to 'unsigned int' [-Wsign-conversion]
+                                if(first | GPIOC->IDR & 0x00000001){    //If Switch is off (Cruise Mode off), do nothing
+                                   ^~~~~ ~
+RPM.c(118): warning: implicit conversion from 'int' to 'float' may lose precision [-Wimplicit-int-float-conversion]
+                                                if(rpm < desired){
+                                                       ~ ^~~~~~~
+RPM.c(119): warning: implicit conversion changes signedness: 'int' to 'uint32_t' (aka 'unsigned int') [-Wsign-conversion]
+                                                                TIM8->CCR1 = max;       
+                                                                           ~ ^~~
+RPM.c(121): warning: implicit conversion from 'int' to 'float' may lose precision [-Wimplicit-int-float-conversion]
+                                                else if(rpm > desired){
+                                                            ~ ^~~~~~~
+RPM.c(122): warning: implicit conversion changes signedness: 'int' to 'uint32_t' (aka 'unsigned int') [-Wsign-conversion]
+                                                                TIM8->CCR1 = min;
+                                                                           ~ ^~~
+RPM.c(108): warning: 'sprintf' will always overflow; destination buffer has size 7, but format string expands to at least 9 [-Wfortify-source]
+                                sprintf(conv, "%f", rpm);
+                                ^
+RPM.c(118): warning: variable 'desired' may be uninitialized when used here [-Wconditional-uninitialized]
+                                                if(rpm < desired){
+                                                         ^~~~~~~
+RPM.c(32): note: initialize the variable 'desired' to silence this warning
+                int desired; 
+                           ^
+                            = 0
+RPM.c(84): warning: variable 'result' may be uninitialized when used here [-Wconditional-uninitialized]
+                                                desired = result;
+                                                          ^~~~~~
+RPM.c(24): note: initialize the variable 'result' to silence this warning
+    int result;
+              ^
+               = 0
+RPM.c(175): warning: implicit conversion changes signedness: 'int' to 'unsigned int' [-Wsign-conversion]
+    GPIOA->MODER &= ~0x00003000;    /* clear pin mode */
+                 ~~ ^~~~~~~~~~~
+RPM.c(177): warning: implicit conversion changes signedness: 'int' to 'unsigned int' [-Wsign-conversion]
+    GPIOA->AFR[0] &= ~0x0F000000;   /* clear pin AF bits */
+                  ~~ ^~~~~~~~~~~
+RPM.c(194): warning: implicit conversion changes signedness: 'int' to 'unsigned int' [-Wsign-conversion]
+                GPIOC->MODER &= ~0x00000003;
+                             ~~ ^~~~~~~~~~~
+RPM.c(226): warning: implicit conversion changes signedness: 'int' to 'unsigned int' [-Wsign-conversion]
+    GPIOC->MODER &= ~0x0000CC00;    /* clear pin mode */
+                 ~~ ^~~~~~~~~~~
+RPM.c(231): warning: implicit conversion changes signedness: 'int' to 'unsigned int' [-Wsign-conversion]
+    GPIOB->MODER &= ~0x0000FF00;    /* clear pin mode */
+                 ~~ ^~~~~~~~~~~
+RPM.c(254): warning: implicit conversion loses integer precision: 'int' to 'char' [-Wimplicit-int-conversion]
+    LCD_nibble_write(command << 4, 0);      /* then lower nibble */
+    ~~~~~~~~~~~~~~~~ ~~~~~~~~^~~~
+RPM.c(264): warning: implicit conversion loses integer precision: 'int' to 'char' [-Wimplicit-int-conversion]
+    LCD_nibble_write(data << 4, RS);        /* then lower nibble */
+    ~~~~~~~~~~~~~~~~ ~~~~~^~~~
+24 warnings generated.
+compiling RPM.c...
+linking...
+Program Size: Code=5756 RO-data=644 RW-data=0 ZI-data=1632  
+".\Objects\RPM.axf" - 0 Error(s), 24 Warning(s).
+
+<h2>Software Packages used:</h2>
+
+Package Vendor: ARM
+                http://www.keil.com/pack/ARM.CMSIS.5.7.0.pack
+                ARM.CMSIS.5.7.0
+                CMSIS (Cortex Microcontroller Software Interface Standard)
+   * Component: CORE Version: 5.4.0
+
+Package Vendor: Keil
+                http://www.keil.com/pack/Keil.STM32F4xx_DFP.2.14.0.pack
+                Keil.STM32F4xx_DFP.2.14.0
+                STMicroelectronics STM32F4 Series Device Support, Drivers and Examples
+   * Component: Startup Version: 2.6.3
+
+<h2>Collection of Component include folders:</h2>
+  .\RTE\_Target_1
+  C:\Users\nazim\AppData\Local\Arm\Packs\ARM\CMSIS\5.7.0\CMSIS\Core\Include
+  C:\Users\nazim\AppData\Local\Arm\Packs\Keil\STM32F4xx_DFP\2.14.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include
+
+<h2>Collection of Component Files used:</h2>
+
+   * Component: ARM::CMSIS:CORE:5.4.0
+
+   * Component: Keil::Device:Startup:2.6.3
+      Source file:   MDK\Device\Source\ARM\STM32F4xx_OTP.s
+      Source file:   MDK\Device\Source\ARM\STM32F446xx_OPT.s
+      Source file:   Drivers\CMSIS\Device\ST\STM32F4xx\Source\Templates\arm\startup_stm32f446xx.s
+      Include file:  Drivers\CMSIS\Device\ST\STM32F4xx\Include\stm32f4xx.h
+      Source file:   Drivers\CMSIS\Device\ST\STM32F4xx\Source\Templates\system_stm32f4xx.c
+Build Time Elapsed:  00:00:01
+</pre>
+</body>
+</html>
