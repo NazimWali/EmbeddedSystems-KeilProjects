@@ -1,0 +1,175 @@
+<html>
+<body>
+<pre>
+<h1>µVision Build Log</h1>
+<h2>Tool Versions:</h2>
+IDE-Version: µVision V5.31.0.0
+Copyright (C) 2020 ARM Ltd and ARM Germany GmbH. All rights reserved.
+License Information: Nazim Windows, HP Inc., LIC=----
+ 
+Tool Versions:
+Toolchain:       MDK-Lite  Version: 5.31.0.0
+Toolchain Path:  C:\Keil_v5\ARM\ARMCLANG\Bin
+C Compiler:      ArmClang.exe V6.14
+Assembler:       Armasm.exe V6.14
+Linker/Locator:  ArmLink.exe V6.14
+Library Manager: ArmAr.exe V6.14
+Hex Converter:   FromElf.exe V6.14
+CPU DLL:         SARMCM3.DLL V5.31.0.0
+Dialog DLL:      DCM.DLL V1.17.3.0
+Target DLL:      STLink\ST-LINKIII-KEIL_SWO.dll V3.0.7.0
+Dialog DLL:      TCM.DLL V1.46.0.0
+ 
+<h2>Project:</h2>
+C:\Users\nazim\Desktop\Courses\Keil_Pgrms\Embedded\CruiseBang\CruiseBang.uvprojx
+Project File Date:  05/09/2021
+
+<h2>Output:</h2>
+*** Using Compiler 'V6.14', folder: 'C:\Keil_v5\ARM\ARMCLANG\Bin'
+Build target 'Target 1'
+CruiseBang.c(67): warning: implicit conversion increases floating-point precision: 'float' to 'double' [-Wdouble-promotion]
+                                                sprintf(cruisemode, "%f", desired);
+                                                ~~~~~~~                   ^~~~~~~
+CruiseBang.c(83): warning: '&' within '|' [-Wbitwise-op-parentheses]
+                                if(first | GPIOC->IDR & 0x00000001){    //If Switch is off (Cruise Mode off), then continue reading and updating result from ADC
+                                         ~ ~~~~~~~~~~~^~~~~~~~~~~~
+CruiseBang.c(83): note: place parentheses around the '&' expression to silence this warning
+                                if(first | GPIOC->IDR & 0x00000001){    //If Switch is off (Cruise Mode off), then continue reading and updating result from ADC
+                                           ~~~~~~~~~~~^~~~~~~~~~~~
+CruiseBang.c(83): warning: implicit conversion changes signedness: 'int' to 'unsigned int' [-Wsign-conversion]
+                                if(first | GPIOC->IDR & 0x00000001){    //If Switch is off (Cruise Mode off), then continue reading and updating result from ADC
+                                   ^~~~~ ~
+CruiseBang.c(87): warning: implicit conversion changes signedness: 'volatile uint32_t' (aka 'volatile unsigned int') to 'int' [-Wsign-conversion]
+                                                result = ADC1->DR;              /* read conversion result */
+                                                       ~ ~~~~~~^~
+CruiseBang.c(88): warning: implicit conversion from 'int' to 'float' may lose precision [-Wimplicit-int-float-conversion]
+                                                desired = result;
+                                                        ~ ^~~~~~
+CruiseBang.c(96): warning: implicit conversion changes signedness: 'int' to 'uint32_t' (aka 'unsigned int') [-Wsign-conversion]
+                                                TIM8->CCR1 = result;                            //feed result from ADC to PWM to supply voltage to motor
+                                                           ~ ^~~~~~
+CruiseBang.c(101): warning: implicit conversion changes signedness: 'volatile uint32_t' (aka 'volatile unsigned int') to 'int' [-Wsign-conversion]
+                                                last = TIM3->CCR1; 
+                                                     ~ ~~~~~~^~~~
+CruiseBang.c(105): warning: implicit conversion changes signedness: 'volatile uint32_t' (aka 'volatile unsigned int') to 'int' [-Wsign-conversion]
+                                                current = TIM3->CCR1;       /* read captured counter value */
+                                                        ~ ~~~~~~^~~~
+CruiseBang.c(106): warning: implicit conversion from 'int' to 'float' may lose precision [-Wimplicit-int-float-conversion]
+                                                period = current - last;    /* calculate the period */
+                                                       ~ ~~~~~~~~^~~~~~
+CruiseBang.c(111): warning: implicit conversion increases floating-point precision: 'float' to 'double' [-Wdouble-promotion]
+                                                sprintf(conv, "%f", rpm);
+                                                ~~~~~~~             ^~~
+CruiseBang.c(122): warning: implicit conversion changes signedness: 'volatile uint32_t' (aka 'volatile unsigned int') to 'int' [-Wsign-conversion]
+                                                        last2 = TIM3->CCR1; 
+                                                              ~ ~~~~~~^~~~
+CruiseBang.c(126): warning: implicit conversion changes signedness: 'volatile uint32_t' (aka 'volatile unsigned int') to 'int' [-Wsign-conversion]
+                                                        current2 = TIM3->CCR1;       /* read captured counter value */
+                                                                 ~ ~~~~~~^~~~
+CruiseBang.c(127): warning: implicit conversion from 'int' to 'float' may lose precision [-Wimplicit-int-float-conversion]
+                                                        period2 = current2 - last2;    /* calculate the period */
+                                                                ~ ~~~~~~~~~^~~~~~~
+CruiseBang.c(132): warning: implicit conversion increases floating-point precision: 'float' to 'double' [-Wdouble-promotion]
+                                                        sprintf(actualdisp, "%f", actual);
+                                                        ~~~~~~~                   ^~~~~~
+CruiseBang.c(139): warning: implicit conversion turns floating-point number into integer: 'float' to 'uint32_t' (aka 'unsigned int') [-Wfloat-conversion]
+                                                                                TIM8->CCR1 = desired+=5;
+                                                                                           ~ ~~~~~~~^~~
+CruiseBang.c(142): warning: implicit conversion turns floating-point number into integer: 'float' to 'uint32_t' (aka 'unsigned int') [-Wfloat-conversion]
+                                                                                TIM8->CCR1 = desired-=5;
+                                                                                           ~ ~~~~~~~^~~
+CruiseBang.c(147): warning: implicit conversion increases floating-point precision: 'float' to 'double' [-Wdouble-promotion]
+                                                        sprintf(conv, "%f", rpm);
+                                                        ~~~~~~~             ^~~
+CruiseBang.c(41): warning: unused variable 'max' [-Wunused-variable]
+                int max = 4000;
+                    ^
+CruiseBang.c(42): warning: unused variable 'min' [-Wunused-variable]
+                int min = 425;
+                    ^
+CruiseBang.c(67): warning: 'sprintf' will always overflow; destination buffer has size 7, but format string expands to at least 9 [-Wfortify-source]
+                                                sprintf(cruisemode, "%f", desired);
+                                                ^
+CruiseBang.c(111): warning: 'sprintf' will always overflow; destination buffer has size 7, but format string expands to at least 9 [-Wfortify-source]
+                                                sprintf(conv, "%f", rpm);
+                                                ^
+CruiseBang.c(132): warning: 'sprintf' will always overflow; destination buffer has size 7, but format string expands to at least 9 [-Wfortify-source]
+                                                        sprintf(actualdisp, "%f", actual);
+                                                        ^
+CruiseBang.c(147): warning: 'sprintf' will always overflow; destination buffer has size 7, but format string expands to at least 9 [-Wfortify-source]
+                                                        sprintf(conv, "%f", rpm);
+                                                        ^
+CruiseBang.c(138): warning: variable 'rpm' may be uninitialized when used here [-Wconditional-uninitialized]
+                                                        if(actual < (rpm-100)){
+                                                                     ^~~
+CruiseBang.c(27): note: initialize the variable 'rpm' to silence this warning
+                float rpm;      
+                         ^
+                          = 0.0
+CruiseBang.c(96): warning: variable 'result' may be uninitialized when used here [-Wconditional-uninitialized]
+                                                TIM8->CCR1 = result;                            //feed result from ADC to PWM to supply voltage to motor
+                                                             ^~~~~~
+CruiseBang.c(24): note: initialize the variable 'result' to silence this warning
+    int result;
+              ^
+               = 0
+CruiseBang.c(202): warning: implicit conversion changes signedness: 'int' to 'unsigned int' [-Wsign-conversion]
+    GPIOA->MODER &= ~0x00003000;    /* clear pin mode */
+                 ~~ ^~~~~~~~~~~
+CruiseBang.c(204): warning: implicit conversion changes signedness: 'int' to 'unsigned int' [-Wsign-conversion]
+    GPIOA->AFR[0] &= ~0x0F000000;   /* clear pin AF bits */
+                  ~~ ^~~~~~~~~~~
+CruiseBang.c(221): warning: implicit conversion changes signedness: 'int' to 'unsigned int' [-Wsign-conversion]
+                GPIOC->MODER &= ~0x00000003;
+                             ~~ ^~~~~~~~~~~
+CruiseBang.c(253): warning: implicit conversion changes signedness: 'int' to 'unsigned int' [-Wsign-conversion]
+    GPIOC->MODER &= ~0x0000CC00;    /* clear pin mode */
+                 ~~ ^~~~~~~~~~~
+CruiseBang.c(258): warning: implicit conversion changes signedness: 'int' to 'unsigned int' [-Wsign-conversion]
+    GPIOB->MODER &= ~0x0000FF00;    /* clear pin mode */
+                 ~~ ^~~~~~~~~~~
+CruiseBang.c(281): warning: implicit conversion loses integer precision: 'int' to 'char' [-Wimplicit-int-conversion]
+    LCD_nibble_write(command << 4, 0);      /* then lower nibble */
+    ~~~~~~~~~~~~~~~~ ~~~~~~~~^~~~
+CruiseBang.c(291): warning: implicit conversion loses integer precision: 'int' to 'char' [-Wimplicit-int-conversion]
+    LCD_nibble_write(data << 4, RS);        /* then lower nibble */
+    ~~~~~~~~~~~~~~~~ ~~~~~^~~~
+32 warnings generated.
+compiling CruiseBang.c...
+linking...
+Program Size: Code=5920 RO-data=648 RW-data=0 ZI-data=1632  
+".\Objects\CruiseBang.axf" - 0 Error(s), 32 Warning(s).
+
+<h2>Software Packages used:</h2>
+
+Package Vendor: ARM
+                http://www.keil.com/pack/ARM.CMSIS.5.7.0.pack
+                ARM.CMSIS.5.7.0
+                CMSIS (Cortex Microcontroller Software Interface Standard)
+   * Component: CORE Version: 5.4.0
+
+Package Vendor: Keil
+                http://www.keil.com/pack/Keil.STM32F4xx_DFP.2.14.0.pack
+                Keil.STM32F4xx_DFP.2.14.0
+                STMicroelectronics STM32F4 Series Device Support, Drivers and Examples
+   * Component: Startup Version: 2.6.3
+
+<h2>Collection of Component include folders:</h2>
+  .\RTE\_Target_1
+  C:\Users\nazim\AppData\Local\Arm\Packs\ARM\CMSIS\5.7.0\CMSIS\Core\Include
+  C:\Users\nazim\AppData\Local\Arm\Packs\Keil\STM32F4xx_DFP\2.14.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include
+
+<h2>Collection of Component Files used:</h2>
+
+   * Component: ARM::CMSIS:CORE:5.4.0
+
+   * Component: Keil::Device:Startup:2.6.3
+      Source file:   Drivers\CMSIS\Device\ST\STM32F4xx\Source\Templates\arm\startup_stm32f446xx.s
+      Include file:  Drivers\CMSIS\Device\ST\STM32F4xx\Include\stm32f4xx.h
+      Source file:   MDK\Device\Source\ARM\STM32F446xx_OPT.s
+      Source file:   MDK\Device\Source\ARM\STM32F4xx_OTP.s
+      Source file:   Drivers\CMSIS\Device\ST\STM32F4xx\Source\Templates\system_stm32f4xx.c
+Build Time Elapsed:  00:00:01
+</pre>
+</body>
+</html>
